@@ -1,0 +1,169 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: azure;
+}
+
+hr{
+    width: 500px;
+    margin-bottom: 30px;
+}
+hr{
+    width: 80%;
+}
+#dfscontainer{
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 920px;
+    margin: 0 auto;
+    background-color: rgb(58, 57, 55);
+}
+body{
+    background-color: rgb(58, 57, 55);
+}
+
+#dfsform{
+padding-left: 15%;
+height: 100%;
+width:300px;
+}
+
+#dfsformSettings{
+    margin-top: 100px;
+    height: 200px;
+    background-color: rgb(70, 63, 63);
+    border: 5px solid rgb(62, 5, 5);
+    padding-bottom: 10%;
+    border-radius: 10%;
+}
+#dfsformSandbox{
+    height: 200px;
+    margin-top: 100px;
+    background-color: rgb(70, 63, 63);
+    border: 5px solid rgb(62, 5, 5);
+    padding-bottom: 10%;
+    border-radius: 10%;
+}
+.sandbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+#dfsprikaz{
+padding-left: 10%;
+}
+
+
+
+.cform{
+    display:flex;
+    flex-direction: column;
+
+}
+.cformfields{
+    display:flex;
+    flex-direction: column;
+}
+
+.labela{
+    
+    align-self:flex-start;
+}
+.ccalcPathButton{
+    margin-top: 10%;
+    width: 100px;
+    height: 50px;
+}
+
+/**{
+    cursor: url(img/bruss.svg), auto;
+}
+*/
+.emoji_holders{
+
+    width:37px;
+    height: 37px;
+    border: 5px solid rgb(62, 5, 5);
+    background-color: black;
+    background-position: center;
+    background-size:90% 90%;
+    background-repeat: no-repeat;
+
+}
+.formFieldsButtons{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.cselect{
+    width: 50%;
+    align-self: center;
+}
+
+.start{
+   /*samo za obelezavanje pocetka*/ 
+}
+.end{
+    /*samo za obelezavanje kraja*/
+}
+
+.rabbit_image{
+
+    width:37px;
+    height: 37px;
+    border: 5px solid rgb(62, 5, 5);
+    background-color: black;
+    background-position: center;
+    background-size:90% 90%;
+    background-repeat: no-repeat;
+    background-image: url(img/rabbit.png);
+}
+
+.carrot_image{
+    width:37px;
+    height: 37px;
+    border: 5px solid rgb(62, 5, 5);
+    background-color: black;
+    background-position: center;
+    background-size:90% 90%;
+    background-repeat: no-repeat;
+    background-image: url(img/carrot.png);
+}
+
+.brush_image{
+
+    width:37px;
+    height: 37px;
+    border: 5px solid rgb(62, 5, 5);
+    background-color: black;
+    background-position: center;
+    background-size:90% 90%;
+    background-repeat: no-repeat;
+    background-image: url(img/brush.png);
+}
+
+#board{
+    width: 780px;
+    height: 780px;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile{
+    width: 24px;
+    height: 24px;
+    border: 1px solid lightgray;
+    border: 1px solid rgb(62, 5, 5);
+    font-size: 20px;
+    font-weight: bold;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
