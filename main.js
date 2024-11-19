@@ -34,15 +34,16 @@ let board = [ [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 const array = [];
 var pathFound = false;
 var pressed = false;
+var pressedRight = false;
 createGrid();
-
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault(); // Sprečava podrazumevani meni desnog klika
+});
 function createGrid(){
     for(let r = 0; r < size; r++){
         for(let c=0; c<size; c++){
             let tile = document.createElement("div");
             tile.id = r*size+c;
-            //tile.innerHTML = board[r][c];
-            //tile.innerHTML = "🐇"
             tile.broj = board[r][c];
             tile.classList.add("tile");
             tile.posecen = false;
@@ -55,25 +56,41 @@ function createGrid(){
             tile.addEventListener('mousedown', e =>{
                 e.preventDefault();
                 pressed = true;
-                if(tile.innerHTML!="🐇" && tile.innerHTML!="🥕" && tile.broj != "0"){
+                if(e.button === 0){
+                    pressed = true;
+                }
+                else if(e.button === 2){
+                    pressedRight = true;
+                }
+                // console.log(pressed);
+                if(tile.innerHTML!="🐇" && tile.innerHTML!="🥕"){ //&& tile.broj != "0"){
                     
                     switch(currentBrush){
                         case "rabbit":
-                            tile.innerHTML = "🐇";
-                            currentBrush = "empty";
-                            document.body.style.cursor = "auto";
-                            tile.classList.add("start");
+                            if(tile.broj!="0"){
+                                tile.innerHTML = "🐇";
+                                currentBrush = "empty";
+                                document.body.style.cursor = "auto";
+                                tile.classList.add("start");
+                            }
                             break;
                         case "carrot":
-                            tile.innerHTML = "🥕";
-                            currentBrush = "empty";
-                            document.body.style.cursor = "auto";
-                            tile.classList.add("end");
+                            if(tile.broj!="0"){
+                                tile.innerHTML = "🥕";
+                                currentBrush = "empty";
+                                document.body.style.cursor = "auto";
+                                tile.classList.add("end");
+                            }
                             break;
                         case "brush":
-                            tile.style.backgroundColor = "black";
-                            //tile.innerHTML="🗻";
-                            tile.broj = "0";
+                            if(tile.broj!=0 && pressed){
+                                tile.style.backgroundColor = "black";
+                                tile.broj = "0";
+                            }
+                            if(tile.broj==0 && pressedRight && tile.x != 0 && tile.x !=size-1 && tile.y != 0 && tile.y != size-1){
+                                tile.style.backgroundColor = '#A9A9A9'
+                                tile.broj = "1"
+                            }
                             break;
                         default:
                             console.log("Switch za cetku nije validan!");
@@ -100,16 +117,23 @@ function createGrid(){
                 //tile.broj = "0";
             })
             tile.addEventListener('mouseenter', e =>{
+                e.preventDefault()
                 if(pressed && currentBrush == "brush"){
-                    if(tile.innerHTML!="🐇" && tile.innerHTML!="🥕"){
+                    if(tile.innerHTML!="🐇" && tile.innerHTML!="🥕" && pressed && !pressedRight){
                         tile.style.backgroundColor = "black";
-                        //tile.innerHTML="🗻";
                         tile.broj = "0";
+                    }
+                    else if(tile.innerHTML!="🐇" && tile.innerHTML!="🥕" && pressedRight && tile.x != 0 && tile.x !=size-1 && tile.y != 0 && tile.y != size-1){
+                        tile.style.backgroundColor = '#A9A9A9'
+                        tile.broj = "1"
                     }
                 }
             })
             tile.addEventListener('mouseup', e=>{
-                pressed = false;
+                e.preventDefault()
+                    pressed = false
+                    pressedRight = false
+                
             })
 
             tile.broj == 0 ? tile.vrstaBloka = "wall" : tile.vrstaBloka = "path";
@@ -132,11 +156,11 @@ function start(){
 function createForm(){
     let form = document.createElement("div");
     form.classList.add("cform")
-    document.getElementById("dfsform").appendChild(form);
+    document.getElementById("form").appendChild(form);
     let formfields = document.createElement("div");
     formfields.classList.add("cformfields");
 
-    document.getElementById("dfsformSettings").appendChild(formfields);
+    document.getElementById("formSettings").appendChild(formfields);
 
 
 
@@ -149,7 +173,16 @@ function createForm(){
         optionEl.innerHTML = el;
         selectAlgorithm.appendChild(optionEl);
     })
+
+    let title = document.querySelector('.title')
     formfields.appendChild(selectAlgorithm);
+    selectAlgorithm.onchange = (ev) =>{
+        console.log(ev.target.value)
+        title.innerHTML = '' + ev.target.value + ' Path'
+        title.innerHTML = '' + ev.target.value + ' Path'
+    }
+
+
 
     let formFiledsButtons = document.createElement("div");
     formfields.appendChild(formFiledsButtons);
@@ -177,7 +210,7 @@ function createForm(){
     rabbitDiv.used = false;
     carrotDiv.used = false;
 
-    let sandboxsettings = document.getElementById("dfsformSandbox");
+    let sandboxsettings = document.getElementById("formSandbox");
 
     let pomocni = document.createElement("div");
     sandboxsettings.appendChild(pomocni);
@@ -302,7 +335,7 @@ async function DFS(start, target){
     {
     array.push(start);
 
-    start.style.backgroundColor="darkgreen";
+    start.style.backgroundColor='darkgreen'//"darkgreen";
     if(start.id === target.id){
         console.log("Kraj!")
         console.log(array);
@@ -656,8 +689,6 @@ async function drawBiPath(one, two){
 
 }
 
-
-
 async function colorBFSPath(target){
     target.style.backgroundColor = "darkred"
     while(target.parent != null){
@@ -666,9 +697,6 @@ async function colorBFSPath(target){
         target.style.backgroundColor = "darkred";
     }
 }
-
-
-
 
 async function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -680,6 +708,7 @@ function colorPath(x){
         el.style.backgroundColor = "darkred";
     })
 }
+
 function resetColor(){
     var list = document.querySelectorAll(".tile");
     list.forEach(e=>{
