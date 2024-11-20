@@ -1,7 +1,10 @@
+:root{
+    --back: #0B2027;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    background-color: azure;
     display: flex;
     justify-content: center;
     justify-items: center;
@@ -20,59 +23,34 @@ hr{
     
     display: flex;
     flex-direction: row;
-    /* width: 100%; */
- 
-    /* height: 920px; */
-    /* margin: 0 auto; */
-    background-color: rgb(58, 57, 55);
+    background-color: var(--back)
 }
 body{
-    background-color: rgb(58, 57, 55);
+    background-color: var(--back);
 }
 
 .title{
     height: 30px;
+    color: rgb(255, 255, 255);
 }
 .board{
     min-width: 720px;
-}
-
-#form{
-margin-top: 0%;
-height: 100%;
-width:300px;
-}
-
-#formSettings{
-    margin-top: 100px;
-    height: 240px;
-    background-color: rgb(70, 63, 63);
-    border: 5px solid rgb(62, 5, 5);
-    padding-bottom: 10%;
-    border-radius: 10%;
-}
-#formSandbox{
-    height: 200px;
-    margin-top: 100px;
-    background-color: rgb(70, 63, 63);
-    border: 5px solid rgb(62, 5, 5);
-    padding-bottom: 10%;
-    border-radius: 10%;
-}
-.sandbox{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    
 }
 
 
-#display{
-padding-left: 5%;
-}
+
+
+
+
+
+
 
 
 
 .cform{
+    background-color: #4399b6;
+    padding: 10px;
     display:flex;
     flex-direction: column;
 
@@ -86,14 +64,7 @@ padding-left: 5%;
     
     align-self:flex-start;
 }
-.ccalcPathButton{
-    border-radius: 10px;
-    border: 3px solid rgb(26, 4, 4);
-    margin-top: 10%;
-    width: 100px;
-    height: 50px;
-    background-color: rgb(169 169 169);
-}
+
 
 /**{
     cursor: url(img/bruss.svg), auto;
@@ -110,21 +81,9 @@ padding-left: 5%;
     background-repeat: no-repeat;
 
 }
-.formFieldsButtons{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
 
-.cselect{
-    width: 60%;
-    align-self: center;
-    background-color: #a9a9a9;
-    height: 30px;
-    border-radius: 4px;
-    font-size: 14px;
-    /* font-weight: 600; */
-}
+
+
 
 .start{
    /*samo za obelezavanje pocetka*/ 
@@ -133,12 +92,105 @@ padding-left: 5%;
     /*samo za obelezavanje kraja*/
 }
 
+
+
+#display{
+    /* margin-left: 5%; */
+}
+
+#board{
+    width: 960px;
+    height: 720px;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: 15px solid #40798c;
+    border-radius: 12px;
+
+}
+.growAndShrink{
+    animation: growShrink 0.6s ease-in-out forwards;
+}
+
+@keyframes growShrink {
+    0% {
+        transform: scale(1); /* Normalna veličina */
+    }
+    30%{
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.3); /* Povećaj na 120% */
+    }
+    100% {
+        transform: scale(1); /* Vrati se na normalnu veličinu */
+    }
+}
+.tile{
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    /* border: 1px solid lightgray; */
+    background-color: #F2F7F2;
+    /* border: 1px solid rgb(62, 5, 5); */
+    /* border: 1px solid #40798c; */
+    border: 1px solid #047a9e52;
+    /* border: 1px solid #e8ebf3; */
+    /* border-right: 1px solid black; */
+    /* border-bottom: 1px solid black; */
+    font-size: 20px;
+    font-weight: bold;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+/* #main{
+    display: flex;
+
+} */
+#formSettings{
+    box-sizing: border-box;
+    height: 688px;
+    width: 330px;
+    background-color: rgb(87 152 172);
+    border: 15px solid rgb(87 152 172);
+    color: white;
+    border-radius: 15px;
+    height: 720px;
+    
+    /* margin-top: 105px; */
+    /* padding-right: 100px; */
+    /* background-color: rgb(70, 63, 63); */
+    /* padding-bottom: 10%; */
+}
+#form{
+
+    margin-right: 40px;
+    align-self: flex-end;
+    height: 720px;
+    width:330px;
+    background-color: #40798c;
+    padding: 15px;
+    border-radius: 15px;
+    
+}
+.pickerDiv{
+
+    margin-bottom: 20px;
+    background-color: #f2f7f2;
+    border: 4px solid #0B2027;
+
+    border-radius: 10px;
+    width:46px;
+    height: 46px;
+}
+
 .rabbit_image{
 
-    width:37px;
-    height: 37px;
-    border: 5px solid rgb(62, 5, 5);
-    background-color: black;
+
+    /* border: 5px solid rgb(62, 5, 5); */
+    /* background-color: black; */
     background-position: center;
     background-size:90% 90%;
     background-repeat: no-repeat;
@@ -146,10 +198,9 @@ padding-left: 5%;
 }
 
 .carrot_image{
-    width:37px;
-    height: 37px;
-    border: 5px solid rgb(62, 5, 5);
-    background-color: black;
+
+    /* border: 5px solid rgb(62, 5, 5); */
+    /* background-color: black; */
     background-position: center;
     background-size:90% 90%;
     background-repeat: no-repeat;
@@ -158,34 +209,98 @@ padding-left: 5%;
 
 .brush_image{
 
-    width:37px;
-    height: 37px;
-    border: 5px solid rgb(62, 5, 5);
-    background-color: black;
+
+    /* border: 5px solid rgb(62, 5, 5); */
+    /* background-color: black; */
     background-position: center;
     background-size:90% 90%;
     background-repeat: no-repeat;
     background-image: url(img/brush.png);
 }
 
-#board{
-    width: 720px;
-    height: 720px;
-
-    margin: 0 auto;
+.sandbox{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 22px;
 }
 
-.tile{
-    box-sizing: border-box;
-    width: 24px;
-    height: 24px;
-    border: 1px solid lightgray;
-    border: 1px solid rgb(62, 5, 5);
-    font-size: 20px;
-    font-weight: bold;
+.formFieldsButtons{
     display:flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.button1{
+    /* border-radius: 10px; */
+    border: 3px solid rgb(26, 4, 4);
+    margin-top: 5%;
+    width: 85%;
+    height: 50px;
+    /* background-color: #f2f7f2; */
+    background-color: #dafdff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
+.cselect{
+    -webkit-appearance: none; /* Skini podrazumevanu strelicu na Webkit (Chrome, Safari) */
+    -moz-appearance: none;    /* Skini podrazumevanu strelicu na Firefox */
+    appearance: none;         /* Skini podrazumevanu strelicu */
+
+    width: 85%;
+    align-self: center;
+    /* background-color: #f2f7f2; */
+    background-color: #dafdff;
+    height: 46px;
+    text-align: center;
+    border-radius: 0px;
+    border-radius: 8px;
+    border: 3px solid black;
+    font-size: 16px;
+    font-weight: 600;
+
+    background-image: url('img/dropdown5.png');
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Pozicija PNG strelice */
+    background-size: 25px; /* Podešavanje veličine strelice */
+    /* align-content: center; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* font-weight: 600; */
+}
+
+.legend{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 10px;
+    margin-right: 15px;
+    margin-top: 55px
+}
+
+.legendItem{
+    display: flex;
+    flex-direction: row;
+}
+
+.colorItem{
+    border-radius: 5px;
+    margin-left: 22px;
+    width: 30px;
+    height: 30px;
+    border: 3px solid black;
+}
+
+.labelItem{
+    font-weight: 550;
+    margin-left:10px;
+    align-self: center;
+    
 }

@@ -1,58 +1,143 @@
 const size = 30
-let board = [ [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 ],
-              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], ]
-;
+var board = []
+
+initializeBoard()
+function initializeBoard(){
+
+    for(let i = 0; i < size; i++){
+        board[i] = [];
+        for(let j = 0; j < size+10; j++){
+            // if(i == 0 || i == size-1 || j == 0 || j == size+10-1)
+            //     board[i][j] = 0
+            // else
+            //     board[i][j] = 1
+            board[i][j] = createTile(i,j)
+        }
+    }
+}
+
+function createTile(i,j){
+    let tile = document.createElement('div')
+    tile.x = i
+    tile.y = j
+    tile.visited = false;
+    tile.visited2 = false;
+
+    tile.wall = false;
+
+    tile.addEventListener('mousedown', e =>{
+        e.preventDefault();
+        pressed = true;
+        if(e.button === 0){
+            pressed = true;
+        }
+        else if(e.button === 2){
+            pressedRight = true;
+        }
+        // console.log(pressed);
+        if(tile.innerHTML!="🐇" && tile.innerHTML!="🥕"){ //&& tile.broj != "0"){
+            
+            switch(currentBrush){
+                case "rabbit":
+                    if(tile.broj!="0"){
+                        tile.innerHTML = "🐇";
+                        currentBrush = "empty";
+                        document.body.style.cursor = "auto";
+                        tile.classList.add("start");
+                    }
+                    break;
+                case "carrot":
+                    if(tile.broj!="0"){
+                        tile.innerHTML = "🥕";
+                        currentBrush = "empty";
+                        document.body.style.cursor = "auto";
+                        tile.classList.add("end");
+                    }
+                    break;
+                case "brush":
+                    if(!tile.wall && pressed && !pressedRight){
+                        tile.style.backgroundColor = "#0B2027";
+                        // tile.style.border = "1px solid #0B2027";
+                        tile.wall = true;
+                    }
+                    if(tile.wall && pressedRight){
+                        tile.style.backgroundColor = '#F2F7F2'
+                        tile.wall = false;
+                    }
+                    break;
+                default:
+                    console.log("Switch za cetku nije validan!");
+            }
+        }
+        else if((tile.innerHTML == "🐇" || tile.innerHTML=="🥕") && currentBrush!="brush" && currentBrush != "rabbit" && currentBrush != "carrot"){
+            if(tile.innerHTML == "🐇"){
+                tile.innerHTML = " ";
+                document.body.style.cursor = `url("img/rabb.svg"), auto`;
+                currentBrush = "rabbit";
+                tile.classList.remove("start");
+                console.log(tile.classList);
+            }
+            else{
+                tile.innerHTML = " ";
+                document.body.style.cursor = `url("img/carr.svg"), auto`;
+                currentBrush = "carrot";
+                tile.classList.remove("end");
+            }
+        }
+
+
+        //tile.style.backgroundColor = "black";
+        //tile.broj = "0";
+    })
+    tile.addEventListener('mouseenter', e =>{
+        e.preventDefault()
+        if(pressed && currentBrush == "brush"){
+            if(tile.innerHTML!="🐇" && tile.innerHTML!="🥕" && pressed && !pressedRight){
+                // tile.style.backgroundColor = "black";
+                tile.style.backgroundColor = "#0B2027";
+                // tile.style.border = "1px solid #0B2027";
+
+                tile.wall = true;
+            }
+            else if(tile.innerHTML!="🐇" && tile.innerHTML!="🥕" && pressedRight){
+                tile.style.backgroundColor = '#F2F7F2'
+                tile.wall = false;
+            }
+        }
+    })
+    tile.addEventListener('mouseup', e=>{
+        e.preventDefault()
+            pressed = false
+            pressedRight = false
+        
+    })
+
+    tile.classList.add("tile");
+    document.getElementById("board").appendChild(tile);
+    return tile
+}
 
 const array = [];
-var pathFound = false;
+// var pathFound = false;
 var pressed = false;
 var pressedRight = false;
-createGrid();
+// createGrid();
 document.addEventListener('contextmenu', (e) => {
     e.preventDefault(); // Sprečava podrazumevani meni desnog klika
 });
 function createGrid(){
     for(let r = 0; r < size; r++){
-        for(let c=0; c<size; c++){
+        for(let c=0; c<size+10; c++){
             let tile = document.createElement("div");
-            tile.id = r*size+c;
+            tile.id = r*40+c;
             tile.broj = board[r][c];
             tile.classList.add("tile");
             tile.posecen = false;
             tile.parent = null;
-            tile.posecenOne = false;
-            tile.posecenTwo = false;
+            tile.visited = false;
+            tile.visited2 = false;
             tile.x = r;
             tile.y = c;
-            //tile.pressed = false;
             tile.addEventListener('mousedown', e =>{
                 e.preventDefault();
                 pressed = true;
@@ -145,20 +230,23 @@ function createGrid(){
     createForm();
 }
 
-
-
-function start(){
-    let x = document.getElementById("19");
-    let y = document.getElementById("304");
-    setTimeout(DFS(x,y),1000);
+function clearWalls(){
+    console.log('teto')
+    board.forEach(e=>{
+        e.forEach(l =>{
+            l.wall = false;
+            l.style.backgroundColor = '#F2F7F2'
+        })
+    })
 }
 
+createForm()
 function createForm(){
     let form = document.createElement("div");
     form.classList.add("cform")
-    document.getElementById("form").appendChild(form);
+
+    // document.getElementById("form").appendChild(form);
     let formfields = document.createElement("div");
-    formfields.classList.add("cformfields");
 
     document.getElementById("formSettings").appendChild(formfields);
 
@@ -166,7 +254,7 @@ function createForm(){
 
     let selectAlgorithm = document.createElement("select");
     selectAlgorithm.classList.add("cselect");
-    const algorithmOptions = ["DFS", "BFS", "Astar", "Bidirectional"];
+    const algorithmOptions = ["DFS", "BFS", "A*", "Bidirectional"];
     algorithmOptions.forEach(el =>{
         const optionEl = document.createElement("option");
         optionEl.value = el;
@@ -175,51 +263,59 @@ function createForm(){
     })
 
     let title = document.querySelector('.title')
-    formfields.appendChild(selectAlgorithm);
     selectAlgorithm.onchange = (ev) =>{
         console.log(ev.target.value)
-        title.innerHTML = '' + ev.target.value + ' Path'
-        title.innerHTML = '' + ev.target.value + ' Path'
+        title.innerHTML = '' + ev.target.value + ' Search'
+        title.innerHTML = '' + ev.target.value + ' Search'
     }
-
-
-
+    
+    
+    
     let formFiledsButtons = document.createElement("div");
-    formfields.appendChild(formFiledsButtons);
     formFiledsButtons.classList.add("formFieldsButtons");
-
+    
     let resetButton = document.createElement("button");
-    resetButton.classList.add("ccalcPathButton");
+    resetButton.classList.add("button1");
     resetButton.innerHTML = "Reset"
     resetButton.addEventListener('click', resetColor);
-    formFiledsButtons.appendChild(resetButton);
-
+    
     let calculatePathButton = document.createElement("button");
-    calculatePathButton.classList.add("ccalcPathButton");
+    calculatePathButton.classList.add("button1");
     calculatePathButton.innerHTML = "Find path"
     calculatePathButton.addEventListener('click', nadjiPut);
-    formFiledsButtons.appendChild(calculatePathButton);
-
+    
+    let clearWallsButton = document.createElement('button')
+    clearWallsButton.classList.add('button1')
+    clearWallsButton.innerHTML = "Clear Walls"
+    clearWallsButton.addEventListener('click', clearWalls);
+    
     let rabbitDiv = document.createElement("div");
     let carrotDiv = document.createElement("div");
     let brushDiv = document.createElement("div");
-    rabbitDiv.classList.add("rabbit_image");
-    carrotDiv.classList.add("carrot_image");
-    brushDiv.classList.add("brush_image");
-
+    rabbitDiv.classList.add("rabbit_image", 'pickerDiv');
+    carrotDiv.classList.add("carrot_image", 'pickerDiv');
+    brushDiv.classList.add("brush_image", 'pickerDiv');
+    
     rabbitDiv.used = false;
     carrotDiv.used = false;
+    
+    let sandbox = document.createElement("div");
+    // sandboxsettings.appendChild(pomocni);
+    sandbox.classList.add("sandbox");
+    
+    formfields.appendChild(sandbox);
+    sandbox.appendChild(brushDiv);
+    sandbox.appendChild(rabbitDiv);
+    sandbox.appendChild(carrotDiv);
 
-    let sandboxsettings = document.getElementById("formSandbox");
 
-    let pomocni = document.createElement("div");
-    sandboxsettings.appendChild(pomocni);
-    pomocni.classList.add("sandbox");
 
-    pomocni.appendChild(brushDiv);
-    pomocni.appendChild(rabbitDiv);
-    pomocni.appendChild(carrotDiv);
-
+    formfields.appendChild(selectAlgorithm);
+    formfields.appendChild(formFiledsButtons);
+    formFiledsButtons.appendChild(calculatePathButton);
+    formFiledsButtons.appendChild(resetButton);
+    formFiledsButtons.appendChild(clearWallsButton);
+    
     rabbitDiv.addEventListener('click', () =>{
         if(currentBrush == "empty" && rabbitDiv.used == false){
             rabbitDiv.used = true;
@@ -274,8 +370,32 @@ function createForm(){
     });
 
 
+    let legend = document.createElement('div')
+    legend.classList.add('legend')
+    formfields.appendChild(legend);
 
+    let colors = ['#f2f7f2', '#006400', '#EAEA92', '#8B0000', '#0B2027']
+    let labels = ['Unvisited', 'Visited', 'To be visited', 'Final path', 'Wall']
 
+    let legendItem
+    let colorItem
+    let labelItem
+
+    colors.forEach((e,index) =>{
+        legendItem = document.createElement('div')
+        legendItem.classList.add('legendItem')
+        legend.appendChild(legendItem)
+
+        colorItem = document.createElement('div')
+        colorItem.classList.add('colorItem')
+        colorItem.style.backgroundColor = e
+        legendItem.appendChild(colorItem)
+
+        labelItem = document.createElement('label')
+        labelItem.classList.add('labelItem')
+        labelItem.innerHTML = labels[index]
+        legendItem.appendChild(labelItem)
+    })
 }
 
 
@@ -284,14 +404,6 @@ var currentBrush = "empty";
 
 
 function nadjiPut(){
-    
-    //let x = document.querySelector("#inStart");
-    //let y = document.querySelector("#inEnd");
-
-    //let x1 = document.getElementById(x.value);
-    //let y1 = document.getElementById(y.value);
-
-    //let z = document.querySelector(".cselect")
 
     let x1 = document.querySelector(".start");
     let y1 = document.querySelector(".end");
@@ -306,7 +418,7 @@ function nadjiPut(){
         case "BFS":
             BFS(x1,y1)
             break;
-        case "Astar":
+        case "A*":
             Astar(x1,y1)
             break;
         case "Bidirectional":
@@ -316,179 +428,181 @@ function nadjiPut(){
             alert("Nije pronadjen select element!");
     }
 
-
-    //DFS(x1,y1);
-    //BFS(x1, y1);
-    //Astar(x1, y1);
 }
 
-
-//Algoritmi
-//Depth First Search
+//Algorithms
+//DFS
 async function DFS(start, target){
-    console.log("Posecujemo polje: " + start.id)
-    start.posecen = true;
-    
-    await wait(10);
+    let stack = []
+    stack.push(start)
+    start.visited = true;
+    let current = null
+    let prev
+    while(stack.length > 0){
+        console.log(stack[stack.length-1]);
+        prev = current
+        current = stack.pop()
+        current.parent = prev
+        await wait(20)
+        current.style.backgroundColor='#006400'//"darkgreen";
+        // current.style.border ='1px solid #005400'//"darkgreen";
 
-    if(!pathFound)
-    {
-    array.push(start);
+        if(current == target){
+            console.log('targetFound')
+            await colorBFSPath(target)
+            break;
+        }
 
-    start.style.backgroundColor='darkgreen'//"darkgreen";
-    if(start.id === target.id){
-        console.log("Kraj!")
-        console.log(array);
-        colorPath(array);
-        pathFound = true;
-        return start;
+        let left = board[current.x]?.[current.y-1]
+        let right = board[current.x]?.[current.y+1]
+        let up = board[current.x-1]?.[current.y]
+        let down = board[current.x+1]?.[current.y]
+
+
+        if(right && !right.wall && !right.visited){
+            right.visited = true
+            // await wait(20)
+            right.style.backgroundColor="#eaea92"
+            // right.style.border="1px solid #de9c57"
+            stack.push(right)
+            // right.parent = current
+        }
+        if(left && !left.wall && !left.visited){
+            left.visited=true;
+            // await wait(20)
+            left.style.backgroundColor="#eaea92"
+            stack.push(left);
+            // left.parent = current;
+        }
+        if(down && !down.wall && !down.visited){
+            down.visited=true;
+            // await wait(20)
+            down.style.backgroundColor="#eaea92"
+            stack.push(down)
+            // down.parent = current;
+        }
+        if(up && !up.wall && !up.visited){
+            up.visited=true;
+            // await wait(20)
+            up.style.backgroundColor="#eaea92"
+            stack.push(up);
+            // up.parent = current;
+        }
     }
-
-    let left, right, up, down;
-    if(start.id%size-1 >= 0){
-        left = document.getElementById(parseInt(start.id) - 1)
-    }
-        
-    if(left && left.broj !=0 && left.posecen == false)
-        await DFS(left, target);
-
-
-    if(start.id%size+1 <=size){
-        right = document.getElementById(parseInt(start.id) + 1)
-    }
-    if(right != null && right.broj != 0 && right.posecen == false){
-        await DFS(right, target);
-    }
-        
-    up = document.getElementById(parseInt(start.id) - size)
-    if(up && up.broj != 0 && up.posecen == false)
-        await DFS(up, target);
-
-    down = document.getElementById(parseInt(start.id) + size)
-    if(down && down.broj != 0 && down.posecen == false)
-        await DFS(down, target);
-
-
-    if(left.posecen == true || left.broj == 0 && right.posecen == true || right.broj == 0 && up.posecen == true || up.broj == 0 && down.posecen == true || down.broj == 0)
-        array.pop();
-
-
-    //console.log("Nema kraja :(");
-    return;
-    }
-    return;
 }
-//Breadth First Search
-const queue = [];
+//BFS
 async function BFS(start, target){
 
+    const queue = []
     queue.push(start);
+
     while (queue.length > 0){
-        await wait(10);
+        await wait(20);
         let current  = queue.shift()
-        current.posecen = true;
+
+        current.visited = true;
         current.style.backgroundColor = "darkgreen"
 
-        let left, right, up, down;
-        if(current.id%size-1 >= 0){
-            left = document.getElementById(parseInt(current.id) - 1)
+        if(current == target){
+            colorBFSPath(target)
+            break;
         }
-        if(left && left.broj !=0 && left.posecen == false){
-            left.posecen=true;
+
+        let left = board[current.x]?.[current.y-1]
+        let right = board[current.x]?.[current.y+1]
+        let up = board[current.x-1]?.[current.y]
+        let down = board[current.x+1]?.[current.y]
+
+
+        if(left && !left.wall && !left.visited){
+            left.visited = true;
+            left.style.backgroundColor="#eaea92"
             queue.push(left);
             left.parent = current;
         }
             
-
-        if(current.id%size+1 <=size){
-            right = document.getElementById(parseInt(current.id) + 1)
-        }
-        if(right != null && right.broj != 0 && right.posecen == false){
-            right.posecen = true;
-            queue.push(right);
-            right.parent = current;
+        if(right && !right.wall && !right.visited){
+            right.visited = true
+            right.style.backgroundColor="#eaea92"
+            queue.push(right)
+            right.parent = current
         }
             
-        up = document.getElementById(parseInt(current.id) - size)
-        if(up && up.broj != 0 && up.posecen == false){
-            up.posecen=true;
+        if(up && !up.wall && !up.visited){
+            up.visited=true;
+            up.style.backgroundColor="#eaea92"
             queue.push(up);
             up.parent = current;
         }
 
-        down = document.getElementById(parseInt(current.id) + size)
-        if(down && down.broj != 0 && down.posecen == false){
-            down.posecen=true;
+        if(down && !down.wall && !down.visited){
+            down.visited=true;
+            down.style.backgroundColor="#eaea92"
             queue.push(down)
             down.parent = current;
         }
 
+
+        
+    }
+
+
+}
+//ASTAR Search
+async function Astar(start, target){
+
+    const starQueue  = [];
+    starQueue.push(start);
+
+    while (starQueue.length > 0){
+        await wait(10);
+        let current  = starQueue.shift()
+
+        current.visited = true;
+        current.style.backgroundColor = "darkgreen"
+
         if(current == target){
             colorBFSPath(target)
             break;
         }
-        
-    }
-    console.log("Gotovo");
-}
-//ASTAR Search
-const starQueue = [];
-async function Astar(start, target){
 
-    starQueue.push(start);
+        let left = board[current.x]?.[current.y-1]
+        let right = board[current.x]?.[current.y+1]
+        let up = board[current.x-1]?.[current.y]
+        let down = board[current.x+1]?.[current.y]
 
-    while (starQueue.length > 0){
-        await wait(10);//PROBLEM:kada se udje u while shiftovan element je vec posecen, kako je zavrsio u nizu ako je posecen?
-        let current  = starQueue.shift()
-        console.log(current);
-        console.log(current.posecen);
-        current.posecen = true;
-        current.style.backgroundColor = "darkgreen"
-
-        let left, right, up, down;
-        if(current.id%size-1 >= 0){
-            left = document.getElementById(parseInt(current.id) - 1)
-        }
-        if(left && left.broj !=0 && left.posecen == false){
-            left.posecen = true;
+        if(left && !left.wall && !left.visited){
+            left.visited = true;
+            left.style.backgroundColor="#eaea92"
             starQueue.push(left);
             left.parent = current;
         }
-            
-
-        if(current.id%size+1 <=size){
-            right = document.getElementById(parseInt(current.id) + 1)
-        }
-        if(right && right.broj != 0 && right.posecen == false){
-            right.posecen = true;
+        
+        if(right && !right.wall && !right.visited){
+            right.visited = true;
+            right.style.backgroundColor="#eaea92"
             starQueue.push(right);
             right.parent = current;
         }
             
-        up = document.getElementById(parseInt(current.id) - size)
-        if(up && up.broj != 0 && up.posecen == false){
-            up.posecen=true;
+        if(up && !up.wall && !up.visited){
+            up.visited=true;
+            up.style.backgroundColor="#eaea92"
             starQueue.push(up);
             up.parent = current;
         }
 
-        down = document.getElementById(parseInt(current.id) + size)
-        if(down && down.broj != 0 && down.posecen == false){
-            down.posecen=true;
+        if(down && !down.wall && !down.visited){
+            down.visited=true;
+            down.style.backgroundColor="#eaea92"
             starQueue.push(down)
             down.parent = current;
-        }
-
-        if(current == target){
-            colorBFSPath(target)
-            break;
         }
         
         //funkcija za preuredjenje niza
         astarPreuredi(starQueue, target);
-
-
     }
+
     console.log("Gotovo");
 }
 function astarPreuredi(starQueue, target){
@@ -505,56 +619,52 @@ function astarPreuredi(starQueue, target){
             best = currDiff;
         }
     })
-    //console.log(starQueue[0])
-    //console.log(starQueue[temp])
-    console.log(temp);
     if(temp != 0)
-    [starQueue[0], starQueue[temp]] = [starQueue[temp], starQueue[0]];
+        [starQueue[0], starQueue[temp]] = [starQueue[temp], starQueue[0]];
 }
-//Bidirection Search
-const bQueueOne = []
-const bQueueTwo = []
-var biPathFound = false;
-var biPathSwitch = false;
-async function Bidirectional(start, target){
-  
+//Bidirecitonal
+async function Bidirectional(start,target){
 
+    const queueOne = []
+    const queueTwo = []
+    var biPathFound = false;
+    var biPathSwitch = false;
+    
     start.parent = null;
     target.parent = null;
-    bQueueOne.push(start);
-    bQueueTwo.push(target);
+    queueOne.push(start);
+    queueTwo.push(target);
 
     while(!biPathFound){
         await wait(10);
         let current;
         if(biPathSwitch){
-            current = bQueueOne.shift()
-            current.posecenOne = true;
+            current = queueOne.shift()
+            current.visited = true;
             current.style.backgroundColor = "darkgreen"
 
-            let left, right, up, down;
-            //levo
-            if(current.id%size-1 >= 0){
-                left = document.getElementById(parseInt(current.id) - 1)
-            }
-            if(left && left.broj !=0 && left.posecenOne == false){
-                left.posecenOne=true;
-                if(left.posecenTwo == true){
+            let left = board[current.x]?.[current.y-1]
+            let right = board[current.x]?.[current.y+1]
+            let up = board[current.x-1]?.[current.y]
+            let down = board[current.x+1]?.[current.y]
+
+            if(left && !left.wall && !left.visited){
+                left.visited=true;
+                if(left.visited2 == true){
                     console.log("Sreli su se!");
                     drawBiPath(left, current);
                     biPathFound = true;
                     break;
                 }
                 left.parent = current;
-                bQueueOne.push(left);
+                left.style.backgroundColor="#eaea92"
+
+                queueOne.push(left);
             }
             //desno
-            if(current.id%size+1 <=size){
-                right = document.getElementById(parseInt(current.id) + 1)
-            }
-            if(right != null && right.broj != 0 && right.posecenOne == false){
-                right.posecenOne = true;
-                if(right.posecenTwo == true){
+            if(right && !right.wall && !right.visited){
+                right.visited = true;
+                if(right.visited2 == true){
                     console.log("Sreli su se!");
                     drawBiPath(right, current);
                     biPathFound = true;
@@ -562,13 +672,14 @@ async function Bidirectional(start, target){
                     break;
                 }
                 right.parent = current;
-                bQueueOne.push(right);
+                right.style.backgroundColor="#eaea92"
+
+                queueOne.push(right);
             }            
             //gore
-            up = document.getElementById(parseInt(current.id) - size)
-            if(up && up.broj != 0 && up.posecenOne == false){
-                up.posecenOne = true;
-                if(up.posecenTwo == true){
+            if(up && !up.wall && !up.visited){
+                up.visited = true;
+                if(up.visited2 == true){
                     console.log("Sreli su se!");
                     drawBiPath(up, current);
                     biPathFound = true;
@@ -576,13 +687,14 @@ async function Bidirectional(start, target){
                     break;
                 }
                 up.parent = current;
-                bQueueOne.push(up);
+                up.style.backgroundColor="#eaea92"
+
+                queueOne.push(up);
             }
             //dole
-            down = document.getElementById(parseInt(current.id) + size)
-            if(down && down.broj != 0 && down.posecenOne == false){
-                down.posecenOne = true;
-                if(down.posecenTwo == true){
+            if(down && !down.wall && !down.visited){
+                down.visited = true;
+                if(down.visited2 == true){
                     console.log("Sreli su se !:)")
                     drawBiPath(down, current);
                     biPathFound = true;
@@ -590,24 +702,27 @@ async function Bidirectional(start, target){
                     break;
                 }
                 down.parent = current;
-                bQueueOne.push(down);
+                down.style.backgroundColor="#eaea92"
+
+                queueOne.push(down);
             }
 
         }
         else{
-            current = bQueueTwo.shift()
+            current = queueTwo.shift()
 
-            current.posecenTwo = true;
+            current.visited2 = true;
             current.style.backgroundColor = "darkgreen"
 
-            let left, right, up, down;
+            let left = board[current.x]?.[current.y-1]
+            let right = board[current.x]?.[current.y+1]
+            let up = board[current.x-1]?.[current.y]
+            let down = board[current.x+1]?.[current.y]
             //levo
-            if(current.id%size-1 >= 0){
-                left = document.getElementById(parseInt(current.id) - 1)
-            }
-            if(left && left.broj !=0 && left.posecenTwo == false){
-                left.posecenTwo=true;
-                if(left.posecenOne == true){
+
+            if(left && !left.wall && !left.visited2){
+                left.visited2=true;
+                if(left.visited == true){
                     console.log("Sreli su se!");
                     drawBiPath(left, current);
                     biPathFound = true;
@@ -615,15 +730,14 @@ async function Bidirectional(start, target){
                     break;
                 }
                 left.parent = current;
-                bQueueTwo.push(left);
+                left.style.backgroundColor="#eaea92"
+
+                queueTwo.push(left);
             }
             //desno
-            if(current.id%size+1 <=size){
-                right = document.getElementById(parseInt(current.id) + 1)
-            }
-            if(right != null && right.broj != 0 && right.posecenTwo == false){
-                right.posecenTwo = true;
-                if(right.posecenOne == true){
+            if(right && !right.wall && !right.visited2){
+                right.visited2 = true;
+                if(right.visited == true){
                     console.log("Sreli su se!");
                     drawBiPath(right, current);
                     biPathFound = true;
@@ -631,13 +745,14 @@ async function Bidirectional(start, target){
                     break;
                 }
                 right.parent = current;
-                bQueueTwo.push(right);
+                right.style.backgroundColor="#eaea92"
+
+                queueTwo.push(right);
             }            
             //gore
-            up = document.getElementById(parseInt(current.id) - size)
-            if(up && up.broj != 0 && up.posecenTwo == false){
-                up.posecenTwo = true;
-                if(up.posecenOne == true){
+            if(up && !up.wall && !up.visited2){
+                up.visited2 = true;
+                if(up.visited == true){
                     console.log("Sreli su se!");
                     drawBiPath(up, current);
                     biPathFound = true;
@@ -645,13 +760,14 @@ async function Bidirectional(start, target){
                     break;
                 }
                 up.parent = current;
-                bQueueTwo.push(up);
+                up.style.backgroundColor="#eaea92"
+
+                queueTwo.push(up);
             }
             //dole
-            down = document.getElementById(parseInt(current.id) + size)
-            if(down && down.broj != 0 && down.posecenTwo == false){
-                down.posecenTwo = true;
-                if(down.posecenOne == true){
+            if(down && !down.wall && !down.visited2){
+                down.visited2 = true;
+                if(down.visited == true){
                     console.log("Sreli su se !:)")
                     drawBiPath(down, current);
                     biPathFound = true;
@@ -659,7 +775,9 @@ async function Bidirectional(start, target){
                     break;
                 }
                 down.parent = current;
-                bQueueTwo.push(down);
+                down.style.backgroundColor="#eaea92"
+
+                queueTwo.push(down);
             }
         }
         biPathSwitch = !biPathSwitch;
@@ -668,7 +786,7 @@ async function Bidirectional(start, target){
     
 }
 
-
+//Color path
 async function drawBiPath(one, two){
     one.style.backgroundColor = "darkred";
     two.style.backgroundColor = "darkred";
@@ -688,44 +806,36 @@ async function drawBiPath(one, two){
 
 
 }
-
 async function colorBFSPath(target){
     target.style.backgroundColor = "darkred"
+    target.classList.add('growAndShrink')
     while(target.parent != null){
-        await wait(20)
+        await wait(40)
+
         target = target.parent;
         target.style.backgroundColor = "darkred";
-    }
-}
+        // target.style.border = "1px solid #270202";
+        target.classList.add('growAndShrink')
 
+    }
+    target.classList.add('growAndShrink')
+
+}
+//Wait
 async function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-//Coloring
-function colorPath(x){
-    x.forEach(el =>{
-        el.style.backgroundColor = "darkred";
-    })
 }
 
+
 function resetColor(){
-    var list = document.querySelectorAll(".tile");
-    list.forEach(e=>{
-        e.broj == 0 ? e.style.backgroundColor = "black" : e.style.backgroundColor = "darkgrey";
-        e.posecen = false;
-        e.posecenOne = false;
-        e.posecenTwo = false;
+    board.forEach(s=>{
+        s.forEach(e=>{
+
+            e.wall ? e.style.backgroundColor = "#0B2027" : e.style.backgroundColor = "#F2F7F2";
+            e.classList.remove('growAndShrink')
+            e.visited = false;
+            e.visited = false;
+            e.visited2 = false;
+        })
     })
-    pathFound = false;
-    array.splice(0, array.length);
-    queue.splice(0, queue.length);
-    
-    starQueue.splice(0, starQueue.length);
-
-    bQueueOne.splice(0, bQueueOne.length);
-    bQueueTwo.splice(0, bQueueTwo.length);
-    biPathFound = false;
-
-
 }
